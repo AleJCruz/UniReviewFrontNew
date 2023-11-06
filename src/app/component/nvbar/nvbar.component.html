@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/">UniReview</a>
+
+
+  <ng-container *ngIf="!isAuthenticated">
+    <div class="center-items">
+      <a mat-button routerLink="/landing/nosotros">Nosotros</a>
+      <a mat-button routerLink="/membresia">Membresía</a>
+      <a mat-button routerLink="/contactanos">Contáctanos</a>
+    </div>
+
+    <a mat-button class="custom-button" routerLink="/login">Ingresar</a>
+    <a mat-button class="custom-button" routerLink="/register">Registrarse</a>
+  </ng-container>
+  <!-- Sección para usuarios autenticados -->
+  <ng-container *ngIf="isAuthenticated">
+    <div class="center-items">
+      <a mat-button routerLink="/user/teachers">Teachers</a>
+      <a mat-button routerLink="/user/universities">Universities</a>
+    </div>
+
+    <button mat-button [matMenuTriggerFor]="profileMenu">
+      <img *ngIf="'data:image/png;base64,'+ user.image.imageData" [src]="'data:image/png;base64,' + user.image.imageData" alt="Perfil" class="profile-picture" />
+      Perfil
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="/user/profile">Mi perfil</button>
+      <button mat-menu-item routerLink="/configuraciones">Configuraciones</button>
+      <button mat-menu-item routerLink="/landing" (click)="logout()">Cerrar sesión</button>
+    </mat-menu>
+  </ng-container>
+</mat-toolbar>

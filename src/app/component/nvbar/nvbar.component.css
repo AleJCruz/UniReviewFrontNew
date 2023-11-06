@@ -1,0 +1,60 @@
+mat-toolbar {
+background-color: #2e34b8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-form-field {
+  align-self: center;
+  margin-right: 16px;
+}
+/*Botones de persona sin autenticar*/
+.center-items {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.custom-button {
+  background-color: purple;
+  color: white;
+  border-radius: 50px;
+  border: 2px solid purple;
+  margin-left: 10px;
+}
+
+.custom-button:hover {
+  background-color: darkpurple;
+}
+/*Barra de busqueda*/
+.search-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto; /* Centra horizontalmente en el navbar */
+}
+
+.custom-search-input {
+  width: 250px; /* Ajusta según el largo deseado */
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: 20px; /* Margenes redondos */
+  border: 1px solid #ccc;
+  transition: border-color 0.2s;
+}
+
+.custom-search-input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+.profile-picture {
+  width: 50px; /* Ajusta al tamaño deseado */
+  height: 50px; /* Ajusta al tamaño deseado */
+  border-radius: 50%; /* Para hacerla circular */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+  vertical-align: middle; /* Para centrar verticalmente respecto al texto */
+}
+

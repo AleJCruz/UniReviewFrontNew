@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <img [src]="'data:image/png;base64,' + teacher.image.imageData" alt="{{ teacher.fullname }}" class="profile-pic">
+      <div class="info">
+        <h2>{{ teacher.fullname }}</h2>
+        <div class="rating">
+          <ng-container *ngFor="let star of [1,2,3,4,5]">
+            <i class="{{ star <= teacher.qualification ? 'fas' : 'far' }} fa-star"></i>
+          </ng-container>
+        </div>
+        <p>{{ teacher.summary }}</p>
+        <div class="courses">
+          <h3>Cursos:</h3>
+          <div *ngFor="let course of teacher.coursesarray" class="course-button">
+            {{ course.name }}
+          </div>
+        </div>
+        <div class="rigurosity">
+          <h3>Rigurosidad:</h3>
+          <span [ngClass]="getRigurosityClass(teacher.rigurosity.name)">{{ teacher.rigurosity.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Botón para mostrar el formulario de reseña -->
+<div class="review-button-container">
+  <button (click)="toggleReviewForm()" class="review-button">Hacer reseña</button>
+</div>
+<!-- Formulario de reseña, que se muestra al hacer clic en el botón -->
+<div *ngIf="isReviewFormVisible" class="review-form">
+  <div class="review-form-container" [class.hidden]="!isReviewFormVisible">
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" formControlName="description" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="score">Puntuación:</label>
+        <select id="score" formControlName="score" class="form-control" required>
+          <option value="" disabled>Seleccione una puntuación</option>
+          <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="rigurosity">Rigurosidad:</label>
+        <select id="rigurosity" formControlName="rigurosity" class="form-control" required>
+          <option value="" disabled>Seleccione un nivel de rigurosidad</option>
+          <option *ngFor="let level of ['Baja', 'Media', 'Alta', 'Variable']" [value]="level">{{ level }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Enviar reseña</button>
+    </form>
+  </div>
+</div>
+<!--Listar resenas-->
+<div class="reviews-container">
+  <div class="review-card" *ngFor="let review of reviews">
+    <img [src]="'data:image/png;base64,' + review.user.image.imageData" alt="User photo" class="review-user-image">
+    <div class="review-details">
+      <div class="review-header">
+        <h5 class="review-user-name">{{ review.user.name }}</h5>
+        <span class="review-date">{{ review.reviewdate | date: 'mediumDate' }}</span>
+      </div>
+      <p class="review-description">{{ review.description }}</p>
+      <div class="review-rating">
+        <span>Puntuación:</span>
+        <div class="stars">
+          <!-- Generar estrellas basadas en la puntuación -->
+          <ng-container *ngFor="let star of [].constructor(review.score)">
+            <i class="fas fa-star"></i>
+          </ng-container>
+        </div>
+      </div>
+      <div class="review-rigurosity" [ngClass]="{'low': review.rigurosityTitle == 'Baja', 'medium': review.rigurosityTitle == 'Media', 'variable': review.rigurosityTitle == 'Variable', 'hard': review.rigurosityTitle == 'Alta'}">
+        {{ review.rigurosityTitle }}
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="container">-->
+<!--  <h2>Calificar Profesor</h2>-->
+<!--  <form (ngSubmit)="submitReview()" #reviewForm="ngForm">-->
+<!--    <div class="form-group">-->
+<!--      <label for="description">Descripción:</label>-->
+<!--      <textarea id="description" name="description" [(ngModel)]="review.description" required></textarea>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="score">Calificación:</label>-->
+<!--      <input type="number" id="score" name="score" [(ngModel)]="review.score" required>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="rigurosityTitle">Rigurosidad:</label>-->
+<!--      <select id="rigurosityTitle" name="rigurosityTitle" [(ngModel)]="review.rigurosityTitle" required>-->
+<!--        <option value="Baja">Baja</option>-->
+<!--        <option value="Media">Media</option>-->
+<!--        <option value="Alta">Alta</option>-->
+<!--        <option value="Variable">Variable</option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <button type="submit" [disabled]="reviewForm.invalid">Calificar</button>-->
+<!--  </form>-->
+<!--</div>-->

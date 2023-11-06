@@ -1,0 +1,87 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 100%;
+  max-width: 800px; /* Ajusta este valor según el diseño que desees */
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.university-pic {
+  width: 160px; /* Ancho más largo para un aspecto más rectangular */
+  height: 120px; /* Altura para mantener la proporción */
+  border-radius: 10px; /* Bordes redondeados */
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.info {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.info h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info p {
+  font-size: 16px;
+  color: #555;
+}
+
+.rating-and-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.stars {
+  color: #ffd700;
+  margin-right: 15px;
+}
+
+.btn-rate {
+  background-color: #5D3FD3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  margin-left: auto; /* Push the button to the right */
+}
+
+.btn-rate:hover {
+  background-color: #4c32a8;
+}
+
+/* You may not need this if you have already defined styles for the button */
+button {
+  background-color: #5D3FD3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4c32a8;
+}

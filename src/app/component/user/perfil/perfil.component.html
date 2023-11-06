@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Mi Perfil</h2>
+  <div class="form-group">
+    <img [src]="'data:image/png;base64,'+ user.image.imageData" alt="Imagen de Perfil" class="profile-image">
+  </div>
+  <form (ngSubmit)="updateProfile()" #profileForm="ngForm">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+    </div>
+    <div class="form-group">
+      <label for="username">Nombre de Usuario:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="user.username" required>
+    </div>
+    <div class="form-group">
+      <label for="district">Distrito:</label>
+      <input type="text" id="district" name="district" [(ngModel)]="user.district">
+    </div>
+    <div class="form-group">
+      <label for="age">Edad:</label>
+      <input type="number" id="age" name="age" [(ngModel)]="user.age" required>
+    </div>
+    <button type="submit" [disabled]="profileForm.invalid">Guardar Cambios</button>
+  </form>
+</div>

@@ -1,0 +1,76 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
+.form-register {
+  padding-top: 10px;
+}
+
+.btn-google {
+  text-decoration: none;
+  height: 24px;
+  background-color: #D9D9D9;
+  padding: 10px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.btn-google:hover {
+  background-color: #a5a4a4;
+}
+
+.btn-google img {
+  max-width: 24px;
+  margin-right: 10px;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.actions button {
+  width: 200px;
+  padding: 10px;
+  background-color: violet;
+  color: white;
+  border-radius: 10px;
+  border: 0px solid white;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: rgb(216, 120, 216);
+}
+
+.field input, .field select {
+  padding: 10px;
+}

@@ -1,0 +1,66 @@
+<div *ngIf="university" class="university-card">
+  <div class="university-image-container">
+    <img [src]="'data:image/png;base64,' +university.image.imageData" alt="University Image" class="university-image">
+  </div>
+  <div class="university-details">
+    <h2 class="university-name">{{ university.name }}</h2>
+    <p class="university-info"><strong>Campus:</strong> {{ university.campus }}</p>
+    <p class="university-info"><strong>Pensión:</strong> {{ university.pension | currency }}</p>
+    <p class="university-info" *ngIf="university.havepostgraduate"><strong>Postgrado:</strong> Sí</p>
+    <p class="university-info" *ngIf="university.haveundergraduate"><strong>Pregrado:</strong> Sí</p>
+    <p class="university-info" *ngIf="university.havepeoplewhowork"><strong>EPE:</strong> Sí</p>
+    <div class="university-rating">
+      <span class="rating-stars">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <i class="{{ star <= university.qualification ? 'fas' : 'far' }} fa-star"></i>
+        </ng-container>
+      </span>
+    </div>
+    <a [href]="university.enrollmentLink" class="enrollment-link" target="_blank">Matricula</a>
+  </div>
+</div>
+<!-- Botón para abrir el formulario de reseña -->
+<div class="review-button-container">
+  <button (click)="toggleReviewForm()" class="review-button">Calificar</button>
+</div>
+
+<!-- Formulario de reseña, que se muestra al hacer clic en el botón -->
+<div *ngIf="isReviewFormVisible" class="review-form">
+  <div class="review-form-container">
+    <form [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea id="description" formControlName="description" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="relatedCareer">Carrera Asociada:</label>
+        <input type="text" id="relatedCareer" formControlName="relatedCareer" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="score">Puntuación:</label>
+        <select id="score" formControlName="score" class="form-control" required>
+          <option value="" disabled>Seleccione una puntuación</option>
+          <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success">Enviar reseña</button>
+    </form>
+  </div>
+</div>
+<!-- review-list.component.html -->
+<div class="review-list-container">
+  <div *ngFor="let review of reviews" class="review-card">
+    <div class="review-date">{{ review.reviewdate | date:'mediumDate' }}</div> <!-- Asegúrate de que el formato de fecha es el que necesitas -->
+    <div class="user-image-container">
+      <img [src]="'data:image/png;base64,'+ review.user.image.imageData" alt="User image" class="user-image">
+    </div>
+    <div class="review-content">
+      <div class="user-name">{{ review.user.name }}</div>
+      <div class="user-career">{{ review.relatedCareer }}</div>
+      <div class="review-description">{{ review.description }}</div>
+      <div class="rating-stars">
+        <i *ngFor="let star of [1, 2, 3, 4, 5]; let i = index" class="fas" [class.fa-star]="i < review.score" [class.fa-star-o]="i >= review.score"></i>
+      </div>
+    </div>
+  </div>
+</div>

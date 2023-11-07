@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {University} from "../model/University";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
@@ -29,4 +29,11 @@ export class UniversityService {
   getList(){
     return this.listaChange.asObservable();
   }
+  getUniversitybyID(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<any>(this.url + "/university/" + id, {headers});
+  }
+
 }

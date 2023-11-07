@@ -58,6 +58,16 @@ export class PerfilComponent implements OnInit{
           console.error('Error al actualizar el perfil', error);
         }
       );
+      this.userService.edituserdata((this.user)).subscribe(
+        response => {
+
+          this.editMode = false;
+          console.log('Perfil actualizado correctamente', response);
+        },
+        error => {
+          console.error('Error al actualizar el perfil', error);
+        }
+      );
     }
   }
 }

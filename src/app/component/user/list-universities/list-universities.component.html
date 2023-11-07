@@ -12,7 +12,7 @@
               <i class="{{ star <= university.qualification ? 'fas' : 'far' }} fa-star"></i>
             </ng-container>
           </div>
-          <button class="btn-rate">Calificar</button>
+          <button class="btn-rate" [routerLink]="['/user/funauniversity/', university.id]" >Mas Informacion</button>
         </div>
       </div>
     </div>

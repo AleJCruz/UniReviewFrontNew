@@ -8,6 +8,9 @@ import {PerfilComponent} from "./component/user/perfil/perfil.component";
 import {ListteacherComponent} from "./component/user/listteacher/listteacher.component";
 import {ListUniversitiesComponent} from "./component/user/list-universities/list-universities.component";
 import {QualificationteacherComponent} from "./component/user/qualificationteacher/qualificationteacher.component";
+import {
+  QualificationuniversityComponent
+} from "./component/user/qualificationuniversity/qualificationuniversity.component";
 
 
 const routes: Routes = [
@@ -39,6 +42,9 @@ const routes: Routes = [
       },
       {
         path: 'funateacher/:id', component:QualificationteacherComponent
+      },
+      {
+        path: 'funauniversity/:id', component:QualificationuniversityComponent
       }
     ]
   }

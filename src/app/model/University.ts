@@ -5,9 +5,9 @@ export class University {
   name: string;
   campus: string;
   pension: number;
-  havePostgraduate: boolean;
-  haveUndergraduate: boolean;
-  havePeopleWhoWork: boolean;
+  havepostgraduate: boolean;
+  haveundergraduate: boolean;
+  havepeoplewhowork: boolean;
   qualification:number;
   enrollmentLink:string;
   image:Image;

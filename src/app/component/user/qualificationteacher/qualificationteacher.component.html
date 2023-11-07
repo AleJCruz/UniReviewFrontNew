@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <img [src]="'data:image/png;base64,' + teacher.image.imageData" alt="{{ teacher.fullname }}" class="profile-pic">
+      <img [src]="'data:image/png;base64,' + teacher.image.imageData" alt="teacherimage" class="profile-pic">
       <div class="info">
         <h2>{{ teacher.fullname }}</h2>
         <div class="rating">
@@ -79,26 +79,3 @@
     </div>
   </div>
 </div>
-<!--<div class="container">-->
-<!--  <h2>Calificar Profesor</h2>-->
-<!--  <form (ngSubmit)="submitReview()" #reviewForm="ngForm">-->
-<!--    <div class="form-group">-->
-<!--      <label for="description">Descripción:</label>-->
-<!--      <textarea id="description" name="description" [(ngModel)]="review.description" required></textarea>-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label for="score">Calificación:</label>-->
-<!--      <input type="number" id="score" name="score" [(ngModel)]="review.score" required>-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label for="rigurosityTitle">Rigurosidad:</label>-->
-<!--      <select id="rigurosityTitle" name="rigurosityTitle" [(ngModel)]="review.rigurosityTitle" required>-->
-<!--        <option value="Baja">Baja</option>-->
-<!--        <option value="Media">Media</option>-->
-<!--        <option value="Alta">Alta</option>-->
-<!--        <option value="Variable">Variable</option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <button type="submit" [disabled]="reviewForm.invalid">Calificar</button>-->
-<!--  </form>-->
-<!--</div>-->

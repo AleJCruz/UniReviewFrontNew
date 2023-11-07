@@ -1,93 +1,95 @@
-.profile-image {
-  border-radius: 50%; /* Hace que la imagen sea redonda */
-  object-fit: cover;  /* Asegura que la imagen cubra el área sin deformarse */
-  width: 150px;       /* Establece un ancho fijo */
-  height: 150px;      /* Establece una altura fija */
-}
-
-.container {
+/* Aplica estilos a todo el contenedor para centrar y agregar márgenes */
+.profile-image-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Alinea todo al centro */
-  background-color: #f0f0f7; /* Color de fondo claro */
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.form-group {
-  margin: 10px 0; /* Agrega espacio entre los elementos del formulario */
+/* Estilos para la imagen de perfil */
+.profile-image-container img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 3px solid #ddd; /* Opcional: añade un borde a la imagen */
+}
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
 
-button {
-  background-color: #4e2a84; /* Color morado para el botón */
-  color: white; /* Texto en blanco para el botón */
-  border: none; /* Elimina el borde del botón */
-  padding: 10px 20px; /* Añade padding al botón */
-  border-radius: 5px; /* Bordes redondeados para el botón */
-  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
-  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
-}
-
-button:hover {
-  background-color: #362066; /* Oscurece el botón al pasar el cursor */
-}
-
-/* Estilos adicionales para mejorar la apariencia */
-input[type="text"],
-input[type="email"],
-input[type="number"] {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  width: 100%; /* Hace que los input tomen todo el ancho disponible */
-}
-
-label {
-  color: #333; /* Color de texto para las etiquetas */
-}
-
-h2 {
-  color: #4e2a84; /* Color morado para el encabezado */
-}
+/* Estilos para el formulario */
 form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los elementos hijos horizontalmente */
+  max-width: 800px;
   width: 100%;
-}
-
-/* Agrandar y centrar los campos de entrada */
-.form-group {
-  margin: 10px 0; /* Añade espacio entre campos */
-  width: 80%; /* Hace que cada campo ocupe el 80% del ancho de su contenedor */
-}
-.form-group img {
-  display: block; /* Esto hace que la imagen sea un bloque y pueda ser centrada */
-  margin: 0 auto; /* Esto centra la imagen horizontalmente */
-  border-radius: 50%; /* Esto hará que la imagen sea redonda */
-  width: 250px; /* Ajusta el tamaño de la imagen a tu preferencia */
-  height: 250px; /* Asegúrate de que la altura y el ancho sean iguales para mantener la imagen circular */
-  object-fit: cover; /* Esto se asegura de que la imagen se recorte para llenar el elemento sin distorsionarse */
-}
-
-input[type="text"],
-input[type="email"],
-input[type="number"] {
   border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+/* Estiliza todos los inputs y botones dentro del formulario */
+form input,
+form button {
+  margin-bottom: 10px;
+  padding: 10px;
   border-radius: 5px;
-  padding: 12px 15px; /* Aumenta el padding para hacer el campo más grande */
-  width: 100%; /* Asegura que el input se expanda para llenar el espacio de .form-group */
-  font-size: 16px; /* Aumenta el tamaño de fuente para mejorar la legibilidad */
+  border: 1px solid #ddd;
 }
 
-button {
-  margin-top: 20px; /* Añade espacio arriba del botón */
-  padding: 12px 50px; /* Aumenta el padding para un botón más grande */
-  font-size: 18px; /* Aumenta el tamaño de la fuente del botón */
+/* Estilo específico para botones para que se vean más modernos */
+form button {
+  background-color: #5c6bc0; /* Un color azul suave */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
 }
 
-/* Estilos para mantener el botón centrado y responsive */
-.form-group,
-button[type="submit"] {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+/* Cambia el color del botón al pasar el mouse para dar retroalimentación al usuario */
+form button:hover {
+  background-color: #3949ab;
+}
+
+img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Estilo para el diálogo de confirmación */
+div.confirmation {
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+div.confirmation p {
+  margin-bottom: 10px;
+}
+
+div.confirmation button {
+  background-color: #4CAF50; /* Verde para el botón confirmar */
+  margin-right: 10px;
+}
+
+div.confirmation button:last-child {
+  background-color: #f44336; /* Rojo para el botón cancelar */
+}
+.modify-button {
+  background-color: #ffc107; /* Un color amarillo para diferenciar */
+  color: #000;
+}
+
+.modify-button:hover {
+  background-color: #e0a800;
 }

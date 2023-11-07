@@ -62,6 +62,8 @@ export class QualificationteacherComponent implements OnInit{
       this.teacherreviewService.insert(newReview).subscribe(
         (response) => {
           console.log('Revisión del profesor enviada con éxito', response);
+          this.reviewForm.reset();
+          this.isReviewFormVisible = false;
           // Realiza cualquier otra acción necesaria después de enviar la revisión.
         },
         (error) => {
@@ -72,7 +74,7 @@ export class QualificationteacherComponent implements OnInit{
   }
   //RESENAS
   loadReviews() {
-    this.teacherreviewService.list().subscribe(
+    this.teacherreviewService.list(this.teacherId).subscribe(
       (reviews: TeacherReview[]) => {
         this.reviews = reviews;
       },
@@ -81,8 +83,8 @@ export class QualificationteacherComponent implements OnInit{
       }
     );
     this.teacherreviewService.getList().subscribe(
-      (reviews: TeacherReview[]) => {
-        this.reviews = reviews;
+      (listanueva: TeacherReview[]) => {
+        this.reviews = listanueva;
       },
       (error) => {
         console.error('Error al cargar las reseñas', error);
@@ -113,7 +115,7 @@ export class QualificationteacherComponent implements OnInit{
   }
   getRigurosityClass(rigurosity: string) {
     switch (rigurosity.toLowerCase()) {
-      case 'Sin definir':
+      case 'sin definir':
         return 'undefined';
       case 'baja':
         return 'low';

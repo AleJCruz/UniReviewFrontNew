@@ -1,7 +1,7 @@
 import {University} from "./University";
 import {User} from "./User";
 
-export class UniversityReiew{
+export class UniversityReview {
   id:number;
   reviewdate:string;
   relatedCareer:string;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import {Observable, Subject, switchMap, tap} from "rxjs";
 import {University} from "../model/University";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TeacherReview} from "../model/TeacherReview";
@@ -12,18 +12,29 @@ export class TeacherreviewService {
   private url = "http://localhost:8080/api/";
   private listaChange = new Subject<TeacherReview[]>();
   constructor(private http:HttpClient) { }
-  list():Observable<any>{
+  list(id:number):Observable<any>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
-    return this.http.get<TeacherReview[]>(this.url + "teacherReviews", {headers});
+    return this.http.get<TeacherReview[]>(this.url + "teacherReviews/byid/"+id, {headers});
   }
   insert (teacherReview:TeacherReview){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json', // This line ensures that you're sending JSON
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
-    return this.http.post(this.url+"teacherReview", teacherReview, { headers });
+    return this.http.post<TeacherReview>(this.url + "teacherReview", teacherReview, { headers }).pipe(
+      switchMap(response => {
+        // Aquí asumimos que la respuesta es la reseña insertada
+        return this.list(teacherReview.teacherDTO.id).pipe(
+          tap(updatedList => {
+            this.setList(updatedList); // Actualizar la lista después de la inserción
+          })
+        );
+      })
+    );
+    // return this.http.post(
+    //   this.url+"teacherReview", teacherReview, { headers });
   }
   setList(listaNueva:TeacherReview[]){
 

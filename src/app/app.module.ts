@@ -27,6 +27,7 @@ import { PerfilComponent } from './component/user/perfil/perfil.component';
 import { ListteacherComponent } from './component/user/listteacher/listteacher.component';
 import { ListUniversitiesComponent } from './component/user/list-universities/list-universities.component';
 import {QualificationteacherComponent} from "./component/user/qualificationteacher/qualificationteacher.component";
+import { QualificationuniversityComponent } from './component/user/qualificationuniversity/qualificationuniversity.component';
 
 
 
@@ -41,7 +42,8 @@ import {QualificationteacherComponent} from "./component/user/qualificationteach
     PerfilComponent,
     ListteacherComponent,
     ListUniversitiesComponent,
-    QualificationteacherComponent
+    QualificationteacherComponent,
+    QualificationuniversityComponent
   ],
   imports: [
     BrowserModule,

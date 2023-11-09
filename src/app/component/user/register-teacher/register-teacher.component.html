@@ -1,0 +1,35 @@
+<div class="teacher-form-container">
+
+  <div class="form-header">
+    <div class="go-back" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i>
+    </div>
+    <form [formGroup]="teacherForm" (ngSubmit)="guardar()" class="teacher-form">
+      <input type="text" formControlName="fullname" placeholder="Full Name" class="form-control">
+      <div class="dropdown">
+        <button class="dropdown-button" (click)="toggleDropdown()">
+          Seleccionar Cursos <i class="fas fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" *ngIf="showDropdown">
+          <label *ngFor="let course of courses" class="dropdown-item">
+            <input type="checkbox" [checked]="selectedCourses.includes(course)" (change)="onCourseToggle(course, $event)">
+            {{ course.name }}
+          </label>
+        </div>
+      </div>
+      <textarea formControlName="summary" placeholder="Summary" class="form-control textarea-summary"></textarea>
+
+      <label for="file-upload" class="custom-file-upload">
+        <i class="fas fa-upload"></i> Subir Imagen del Profesor
+      </label>
+      <input id="file-upload" type="file" (change)="onFileSelected($event)" formControlName="image" class="form-control file-input">
+      <label for="file" class="file-label"> {{ fileName }}</label>
+      <button type="submit" class="btn-submit">Registrar</button>
+    </form>
+  </div>
+
+</div>
+
+
+<input type="file" (change)="onFileSelected($event)" class="input-file">
+<button type="button" class="button update-button" (click)="guardar()">Actualizar</button>

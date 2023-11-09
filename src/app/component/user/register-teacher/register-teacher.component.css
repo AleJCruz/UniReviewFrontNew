@@ -1,0 +1,147 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+
+.teacher-form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+.form-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.go-back {
+  position: fixed; /* Posición fija en la pantalla */
+  left: 20px; /* Ajusta según el margen deseado desde la izquierda de la pantalla */
+  top: 80px; /* Ajusta esto para alinear con la altura de tu navbar */
+  z-index: 1000; /* Asegúrate de que la flecha esté sobre otros elementos */
+  cursor: pointer;
+  font-size: 24px;
+  /*position: absolute;*/
+  /*left: 0px;*/
+  /*top: 0;*/
+  /*cursor: pointer;*/
+  /*font-size: 24px;*/
+}
+
+.teacher-form {
+  width: 100%;
+}
+
+.form-control {
+  width: calc(100% - 20px); /* Calcula el ancho menos los márgenes laterales */
+  padding: 10px;
+  margin: 10px auto; /* Auto aplicará un margen automático a izquierda y derecha */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  display: block;
+  box-sizing: border-box;
+}
+.form-control:not(:first-child) {
+  margin-top: 15px;
+}
+.form-control:not(:last-child) {
+  margin-bottom: 15px;
+}
+.form-control.textarea-summary {
+  height: 150px; /* O el valor que desees para la altura */
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.file-input {
+  display: none; /* Hide the default file input */
+}
+
+.btn-submit {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .teacher-form-container {
+    max-width: 100%;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .form-control {
+    padding: 8px;
+    margin: 8px 0;
+  }
+
+  .btn-submit, .custom-file-upload {
+    padding: 8px 12px;
+  }
+
+  .go-back {
+    font-size: 20px;
+  }
+  .dropdown-button {
+    padding: 8px;
+    margin: 8px 0;
+    width: calc(100% - 16px); /* Ajusta el ancho en pantallas más pequeñas */
+  }
+}
+/* Estilos para los campos de formulario de Angular Material */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-button {
+  background-color: #ffffff; /* Cambiado de #f0f0f0 a blanco */
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px auto; /* Ajustado para usar el mismo margen que los inputs */
+  width: calc(100% - 20px); /* Ajustado para que coincida con el ancho del input */
+  text-align: left;
+  border-radius: 4px; /* Añadido para que coincida con el estilo del input */
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  display: block; /* Asegura que ocupe su propia línea */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content .dropdown-item {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown .dropdown-content { display: block; }
+
+/* Estilos para la casilla de verificación */
+.dropdown-content .dropdown-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+

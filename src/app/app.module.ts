@@ -28,6 +28,10 @@ import { ListteacherComponent } from './component/user/listteacher/listteacher.c
 import { ListUniversitiesComponent } from './component/user/list-universities/list-universities.component';
 import {QualificationteacherComponent} from "./component/user/qualificationteacher/qualificationteacher.component";
 import { QualificationuniversityComponent } from './component/user/qualificationuniversity/qualificationuniversity.component';
+import { RegisterTeacherComponent } from './component/user/register-teacher/register-teacher.component';
+import {MatSelectModule} from "@angular/material/select";
+import {SelectDropDownModule} from "ngx-select-dropdown";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 
 
@@ -43,7 +47,8 @@ import { QualificationuniversityComponent } from './component/user/qualification
     ListteacherComponent,
     ListUniversitiesComponent,
     QualificationteacherComponent,
-    QualificationuniversityComponent
+    QualificationuniversityComponent,
+    RegisterTeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,10 @@ import { QualificationuniversityComponent } from './component/user/qualification
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule,
+    SelectDropDownModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

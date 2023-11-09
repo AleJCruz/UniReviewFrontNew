@@ -127,7 +127,7 @@
 }
 
 .review-card {
-  position: relative; /* Agregado para posicionar absolutamente la fecha */
+  position: relative; /* Esto es necesario para la posición absoluta de los hijos */
   display: flex;
   flex-wrap: wrap;
   background: #fff;
@@ -135,8 +135,9 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   margin-bottom: 15px;
   padding: 15px;
-  align-items: flex-start; /* Cambiado para alinear elementos al principio */
+  align-items: center; /* Centra los elementos verticalmente */
 }
+
 .rating-stars .fas.fa-star { /* Corrección de la clase para las estrellas */
   color: #ffdd00; /* Color amarillo para las estrellas */
 }
@@ -146,22 +147,24 @@
 }
 
 .review-date {
-  position: absolute; /* Posicionamiento absoluto */
-  top: 15px; /* Ajuste la posición superior según sea necesario */
-  right: 15px; /* Ajuste la posición derecha según sea necesario */
+  position: absolute; /* Posición absoluta para la fecha */
+  top: 15px; /* Posición desde la parte superior de la tarjeta de revisión */
+  right: 15px; /* Posición desde el lado derecho de la tarjeta de revisión */
   font-size: 0.8em;
   color: #666;
 }
 
 
 .user-image-container {
-  flex: 0 0 80px; /* Ajuste el tamaño según sea necesario */
-  padding-right: 15px;
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-image {
-  width: 100%;
-  height: auto;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 
@@ -185,6 +188,10 @@
 .review-description {
   font-size: 0.9em;
   margin: 10px 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all; /* Fuerza la ruptura de palabras para evitar desbordamiento */
+  overflow-x: hidden; /* Oculta el desbordamiento horizontal */
 }
 
 @media (max-width: 768px) {

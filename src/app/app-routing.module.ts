@@ -11,6 +11,7 @@ import {QualificationteacherComponent} from "./component/user/qualificationteach
 import {
   QualificationuniversityComponent
 } from "./component/user/qualificationuniversity/qualificationuniversity.component";
+import {RegisterTeacherComponent} from "./component/user/register-teacher/register-teacher.component";
 
 
 const routes: Routes = [
@@ -45,6 +46,9 @@ const routes: Routes = [
       },
       {
         path: 'funauniversity/:id', component:QualificationuniversityComponent
+      },
+      {
+        path: 'teachers/insert',component:RegisterTeacherComponent
       }
     ]
   }

@@ -21,11 +21,22 @@ export class TeacherService {
   }
 
 //insertar datos
-  insert (teacher:Teacher){
+  insert (teacher:Teacher, id:number){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
-    return this.http.post(this.url+"teacher", teacher, {headers});
+    return this.http.post<Teacher>(this.url+"teacher/"+id, teacher, {headers});
+  }
+  addCourse(teacherId: number, courseId: number) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+
+    // Las opciones de la solicitud deben incluir los encabezados
+    const options = { headers: headers };
+
+    // La URL y las opciones se pasan como argumentos separados
+    return this.http.put(`${this.url}teacher/${teacherId}/courses/${courseId}`, {}, options);
   }
   setList(listaNueva:Teacher[]){
     this.listaCambio.next(listaNueva); //enviar la nueva lista a los suscriptores

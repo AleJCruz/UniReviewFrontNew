@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {User} from "../model/User";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Image} from "../model/Image";
@@ -10,6 +10,7 @@ import {Image} from "../model/Image";
 export class UserService {
   private url = "http://localhost:8080/api/";
   private listaChange = new Subject<User[]>();
+  private currentUserSubject = new BehaviorSubject<User | null>(null);
   constructor(private http:HttpClient) { }
   list():Observable<any>{
     return this.http.get<User[]>(this.url + "get");
@@ -22,6 +23,12 @@ export class UserService {
   }
   getList(){
     return this.listaChange.asObservable();
+  }
+  getCurrentUserObservable(): Observable<User | null> {
+    return this.currentUserSubject.asObservable();
+  }
+  updateCurrentUser(user: User): void {
+    this.currentUserSubject.next(user);
   }
   edit(id:number, image:Image): Observable<any> {
     const url1 =this.url+ `user/${id}`;

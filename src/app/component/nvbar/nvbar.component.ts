@@ -3,6 +3,7 @@ import {AuthService} from "../../service/auth.service";
 import {Subscription} from "rxjs";
 import {User} from "../../model/User";
 import {Image} from "../../model/Image";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-nvbar',
@@ -13,8 +14,9 @@ export class NvbarComponent implements OnInit, OnDestroy {
   public isAuthenticated: boolean;
   private subscription: Subscription;
   user:User;
+  private userSubscription: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private userService:UserService) {}
 
   ngOnInit() {
     this.subscription = this.authService.getAuthStatus().subscribe(
@@ -25,11 +27,19 @@ export class NvbarComponent implements OnInit, OnDestroy {
         }
       }
     );
+    this.userSubscription = this.userService.getCurrentUserObservable().subscribe(
+      (userData) => {
+        if (userData) {
+          this.user = userData;
+        }
+      }
+    );
   }
 
   // No olvides desuscribirte del observable para evitar fugas de memoria
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 
   logout() {

@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px; /* Añade padding al contenedor */
+  box-sizing: border-box;
 }
 
 .card {
@@ -14,6 +16,7 @@
   margin: 10px;
   width: 100%;
   max-width: 800px;
+  margin-bottom: 20px;
 }
 .card-body {
   display: flex;
@@ -58,7 +61,7 @@
 }
 
 .btn-rate {
-  background-color: #6200ea;
+  background-color: #0020ff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -73,7 +76,7 @@
 /*Otro*/
 
 button {
-  background-color: #5D3FD3; /* A purple color */
+  background-color: #0020ff; /* A purple color */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -83,5 +86,65 @@ button {
 }
 
 button:hover {
-  background-color: #4c32a8; /* A darker purple for hover effect */
+  background-color: #1c0080; /* A darker purple for hover effect */
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio para dispositivos móviles */
+  }
+  .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info {
+    margin-left: 0; /* Remueve el margen para dispositivos móviles */
+    margin-top: 10px;
+  }
+  .rating-and-button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-rate {
+    margin-top: 10px; /* Agrega un margen superior al botón en dispositivos móviles */
+  }
+}
+/* Estilos para el botón flotante */
+.float-button {
+  width: 50px; /* Ancho del botón */
+  height: 50px; /* Altura del botón */
+  position: fixed; /* Posición fija en la pantalla */
+  bottom: 20px; /* Separación desde el fondo */
+  right: 20px; /* Separación desde la derecha */
+  background-color: #0020ff; /* Color del botón */
+  color: white;
+  border: none;
+  border-radius: 50%; /* Redondea completamente los bordes para hacerlo circular */
+  padding: 15px; /* Tamaño del relleno para aumentar el área del botón */
+  font-size: 24px; /* Tamaño del icono "+" */
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3); /* Sombra para el botón flotante */
+  z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
+  align-items: center;
+}
+
+.float-button:hover {
+  animation: bounce 0.5s; /* Color al pasar el mouse */
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Ajusta la altura del rebote aquí */
+  }
+}
+
+/* Asegúrate de que el contenido no se superponga con el botón flotante en pantallas pequeñas */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    padding-bottom: 80px; /* Agrega un relleno inferior al contenedor para evitar superposiciones */
+  }
 }

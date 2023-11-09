@@ -1,37 +1,32 @@
-<div>
-  <h1>Perfil de Usuario</h1>
-  <form *ngIf="!editMode; else editTemplate">
+<div class="profile-container">
+  <h1 class="profile-title">Perfil de Usuario</h1>
+  <div *ngIf="!editMode; else editTemplate" class="profile-view">
     <div class="profile-image-container">
-      <img [src]="'data:image/png;base64,'+ user.image.imageData" alt="Foto de perfil">
+      <img [src]="'data:image/png;base64,'+ user.image.imageData" alt="Foto de perfil" class="profile-image">
     </div>
-    <form>
-      <!-- Campos de datos del perfil -->
-      <p>Nombre: {{user.name}}</p>
-      <p>Correo: {{user.email}}</p>
-      <p>Username: {{user.username}}</p>
-      <p>Distrito: {{user.district}}</p>
-      <p>Edad: {{user.age}}</p>
-      <!-- Botón para activar la edición -->
-      <button type="button" class="modify-button" (click)="editMode = true">Modificar</button>
-
-      <!-- ... Resto del formulario y lógica de confirmación -->
-    </form>
-
-  </form>
+    <div class="profile-info">
+      <p class="profile-item"><span class="profile-label">Nombre:</span> {{ user.name }}</p>
+      <p class="profile-item"><span class="profile-label">Correo:</span> {{ user.email }}</p>
+      <p class="profile-item"><span class="profile-label">Username:</span> {{ user.username }}</p>
+      <p class="profile-item"><span class="profile-label">Distrito:</span> {{ user.district }}</p>
+      <p class="profile-item"><span class="profile-label">Edad:</span> {{ user.age }}</p>
+    </div>
+    <button type="button" class="button modify-button" (click)="editMode = true">Modificar</button>
+  </div>
   <ng-template #editTemplate>
-    <input type="text" [(ngModel)]="user.name">
-    <input type="email" [(ngModel)]="user.email">
-    <input type="text" [(ngModel)]="user.username">
-    <input type="text" [(ngModel)]="user.district">
-    <input type="number" [(ngModel)]="user.age">
-    <!-- Implementa la carga de la imagen como prefieras, este es solo un ejemplo -->
-    <input type="file" (change)="onFileSelected($event)">
-    <button type="button" (click)="confirmEdit()">Actualizar</button>
-    <!-- Diálogo de confirmación -->
-    <div *ngIf="confirmation">
-      <p>¿Quieres hacer los cambios?</p>
-      <button type="button" (click)="updateProfile()">Sí</button>
-      <button type="button" (click)="confirmation = false">No</button>
+    <div class="edit-form">
+      <input type="text" [(ngModel)]="user.name" class="input-field">
+      <input type="email" [(ngModel)]="user.email" class="input-field">
+      <input type="text" [(ngModel)]="user.username" class="input-field">
+      <input type="text" [(ngModel)]="user.district" class="input-field">
+      <input type="number" [(ngModel)]="user.age" class="input-field">
+      <input type="file" (change)="onFileSelected($event)" class="input-file">
+      <button type="button" class="button update-button" (click)="confirmEdit()">Actualizar</button>
+    </div>
+    <div *ngIf="confirmation" class="confirmation-dialog">
+      <p class="confirmation-question">¿Quieres hacer los cambios?</p>
+      <button type="button" class="button confirm-button" (click)="updateProfile()">Sí</button>
+      <button type="button" class="button cancel-button" (click)="confirmation = false">No</button>
     </div>
   </ng-template>
 </div>

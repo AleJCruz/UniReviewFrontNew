@@ -57,5 +57,45 @@ export class TeacherService {
     });
     return this.http.get<any>(this.url + "teacher/" + id, {headers});
   }
+  listByFullName(fullName: string) {
+    // Crear encabezados HTTP si son necesarios, por ejemplo, si requieres un token de autorización.
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
 
+    // Realizar la solicitud GET con los encabezados y retornar el Observable.
+    return this.http.get<Teacher[]>(`${this.url}teacher/findbyfullname/${fullName}`, { headers });
+  }
+  //find por nombre de rigurosidad
+  listTeachersbyRigurosityName(rigurosity:string){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<Teacher[]>(`${this.url}teacher/rigurosity/${rigurosity}`, { headers });
+  }
+  //busqueda avanzada con todos los filtros
+  listTeachersByAdvancedSearch(qFrom:number, qTo:number, rigurosityID:number, courseID:number, fullnameTeacher:string){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<Teacher[]>(`${this.url}teacher/advancedsearch/${qFrom}/${qTo}/${rigurosityID}/${courseID}/${fullnameTeacher}`, { headers });
+  }
+
+  //filtro por curso para teacher
+  listTeacherByCourse(courseID:number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<Teacher[]>(`${this.url}teacher/course/${courseID}`, { headers });
+  }
+
+  //filtro por calificacion para profesor
+  listTeachersByQualifications(qFrom:number, qTo:number){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<Teacher[]>(`${this.url}teacher/qualification/${qFrom}/${qTo}`, { headers });
+  }
+
+  //
 }

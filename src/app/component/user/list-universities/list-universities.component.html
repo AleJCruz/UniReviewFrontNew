@@ -1,11 +1,54 @@
 <div class="container">
+  <!-- Búsqueda avanzada Toggle -->
+  <label>
+    <input type="checkbox" [(ngModel)]="busquedaAvanzada" (click)="toggleAdvancedSearch()"> Búsqueda avanzada
+  </label>
+
+  <!-- Controles de búsqueda avanzada -->
+  <div *ngIf="busquedaAvanzada" class="advanced-search">
+    <!-- Selector de Distritos -->
+    <select [(ngModel)]="selectedDistrict">
+      <option *ngFor="let district of districts" [value]="district">{{ district }}</option>
+    </select>
+
+    <!-- Selector de Modalidad -->
+    <select [(ngModel)]="selectedModality">
+      <option *ngFor="let modality of modalities" [value]="modality">{{ modality }}</option>
+    </select>
+
+    <!-- Rango de Calificación -->
+    <div class="range-slider">
+      <label>Rango de Calificación:</label>
+      <div class="range-inputs">
+        <input type="range" class="custom-range" min="1" max="5" [(ngModel)]="qualificationFrom">
+        <span class="slider-value">{{ qualificationFrom }}</span>
+        <span>a</span>
+        <input type="range" class="custom-range" min="1" max="5" [(ngModel)]="qualificationTo">
+        <span class="slider-value">{{ qualificationTo }}</span>
+      </div>
+    </div>
+
+    <!-- Rango de Pensión -->
+    <div class="range-slider">
+      <label>Rango de Pensión:</label>
+      <input type="number" class="pension-input" min="1" [(ngModel)]="pensionFrom">
+      <span>a</span>
+      <input type="number" class="pension-input" min="1" [(ngModel)]="pensionTo">
+    </div>
+
+    <!-- Botón de búsqueda -->
+    <div class="button-search">
+      <button  (click)="buscarUniversidades()">Buscar</button>
+    </div>
+  </div>
+
   <div *ngFor="let university of universities" class="card">
     <div class="card-body">
       <img [src]="'data:image/png;base64,'+university.image.imageData" alt="University Image" class="university-pic">
       <div class="info">
         <h2>{{ university.name }}</h2>
         <p>Campus: {{ university.campus }}</p>
-        <p>Pensión: {{ university.pension | currency }}</p>
+        <p>Pensión: S/.{{ university.pension}}</p>
         <div class="rating-and-button">
           <div class="stars">
             <ng-container *ngFor="let star of [1,2,3,4,5]">

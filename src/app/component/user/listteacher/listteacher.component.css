@@ -1,4 +1,66 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+
+/* Estilo de la barra de búsqueda y el botón */
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 800px; /* Puedes ajustar este valor según prefieras */
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra ligera para un efecto elevado */
+}
+
+.search-bar input[type="text"] {
+  flex-grow: 1; /* Asegura que el campo de texto ocupe el espacio disponible */
+  padding: 10px;
+  border: none;
+  border-radius: 10px 0 0 10px; /* Bordes redondeados solo en el lado izquierdo */
+  font-size: 16px; /* Tamaño de la fuente */
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0020ff; /* Color que ya estás utilizando */
+  color: white;
+  border-radius: 0 10px 10px 0; /* Bordes redondeados solo en el lado derecho */
+  cursor: pointer;
+  font-size: 16px; /* Tamaño de la fuente */
+  transition: background-color 0.3s ease; /* Transición suave para el efecto hover */
+}
+
+.search-bar button:hover {
+  background-color: #3700b3; /* Efecto hover que ya estás utilizando */
+}
+
+/* Haciendo la barra de búsqueda responsiva */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    width: calc(100% - 40px); /* Ajuste para el padding del contenedor */
+  }
+
+  .search-bar input[type="text"],
+  .search-bar button {
+    width: 100%;
+    border-radius: 10px; /* Bordes redondeados en todos los lados para móviles */
+  }
+
+  .search-bar button {
+    margin-top: 10px; /* Añade espacio entre el campo de texto y el botón en dispositivos móviles */
+  }
+}
+
+/* Asegúrate de añadir los estilos de transición para los elementos interactivos */
+input[type="text"], button {
+  transition: all 0.3s ease;
+}
+
+/* Añade un efecto de enfoque para la barra de búsqueda */
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0020ff; /* Añade un borde de enfoque de color */
+}
+/*Css cartas de profesores*/
 .container {
   display: flex;
   flex-direction: column;
@@ -147,4 +209,72 @@ button:hover {
     padding: 10px;
     padding-bottom: 80px; /* Agrega un relleno inferior al contenedor para evitar superposiciones */
   }
+}
+/* Estilos para la búsqueda avanzada */
+.advanced-search {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.range-slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-range {
+  flex: 1; /* Asegura que el slider ocupe el espacio disponible */
+  margin: 0 10px;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.form-control.invalid {
+  border-color: red;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #0020ff;
+}
+
+/* Ajustes responsivos para búsqueda avanzada */
+@media (max-width: 768px) {
+  .advanced-search {
+    width: calc(100% - 40px);
+  }
+
+  .range-slider label {
+    width: 100%;
+  }
+
+  .custom-range {
+    margin: 10px 0;
+  }
+}
+
+/* Mensaje de error */
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+.range-value {
+  margin: 0 10px; /* Ajusta el margen a tu gusto */
+}
+
+.range-to {
+  margin: 0 4px; /* Ajusta el margen a tu gusto */
 }

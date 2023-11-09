@@ -1,4 +1,111 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+/*Busqueda avanzada*/
+.advanced-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.advanced-search select,
+.advanced-search input[type="range"],
+.advanced-search input[type="number"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.advanced-search label {
+  flex-basis: 100%;
+  color: #555;
+}
+
+/* Ajustes para responsividad */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .rating-and-button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-rate {
+    margin-top: 10px;
+  }
+  .advanced-search {
+    flex-direction: column;
+  }
+}
+
+/* Estilos para los controles de rango y sus etiquetas */
+/* Contenedor para los controles de rango */
+.range-slider {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los input de rango y número */
+.range-inputs, .pension-inputs {
+  display: flex;
+  align-items: center;
+}
+
+.custom-range, .pension-input {
+  margin: 0 5px;
+}
+
+/* Estilos para valores individuales de los sliders */
+.slider-value {
+  white-space: nowrap;
+}
+
+/* Estilos para la entrada de la pensión */
+.pension-input {
+  width: 100px; /* O el ancho que prefieras */
+  padding: 5px;
+  margin: 0 5px;
+  text-align: center;
+}
+.button-search{
+  width: 100px; /* O el ancho que prefieras */
+  padding: 5px;
+  margin: 0 5px;
+  text-align: center;
+}
+/* Separador 'a' estilizado */
+.range-slider span:not(.slider-value) {
+  margin: 0 5px;
+}
+
+/* Botón de búsqueda alineado con los controles */
+.advanced-search > button {
+  margin-top: 10px;
+}
+/* Estilos para los inputs de rango para que ocupen todo el ancho disponible */
+.custom-range {
+  flex-grow: 1;
+  margin: 0 10px; /* Añade margen en los costados para no pegar con los números */
+}
+
+/* Asegúrate de que el contenido no se superponga con el botón flotante en pantallas pequeñas */
+@media (max-width: 768px) {
+  .container {
+    padding-bottom: 80px;
+  }
+}
+/*Tarjetas*/
 .container {
   display: flex;
   flex-direction: column;

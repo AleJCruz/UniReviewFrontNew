@@ -57,4 +57,19 @@ mat-form-field {
   margin-right: 10px; /* Espacio entre la imagen y el texto */
   vertical-align: middle; /* Para centrar verticalmente respecto al texto */
 }
+.disabled {
+  pointer-events: none;
+  color: grey;
+  cursor: default;
+}
 
+.alert-message {
+  color: red; /* Color del mensaje */
+  position: absolute; /* Ajusta la posición según necesites */
+  top: 10px; /* Ajusta según la ubicación deseada */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10; /* Asegúrate de que esté sobre otros elementos */
+  margin-top: 65px;
+  font-size: 12px;
+}

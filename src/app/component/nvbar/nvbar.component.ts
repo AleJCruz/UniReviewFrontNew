@@ -15,7 +15,8 @@ export class NvbarComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   user:User;
   private userSubscription: Subscription;
-
+  private linkEnabled: boolean = false;
+  showMessage: boolean = false;
   constructor(private authService: AuthService, private userService:UserService) {}
 
   ngOnInit() {
@@ -34,6 +35,13 @@ export class NvbarComponent implements OnInit, OnDestroy {
         }
       }
     );
+    this.isLinkDissabled();
+  }
+  onLinkClick(): void {
+    if (!this.linkEnabled) {
+      this.showMessage = true;
+      setTimeout(() => this.showMessage = false, 3000); // El mensaje desaparece después de 3 segundos
+    }
   }
 
   // No olvides desuscribirte del observable para evitar fugas de memoria
@@ -57,5 +65,12 @@ export class NvbarComponent implements OnInit, OnDestroy {
         }
       );
     }
+  }
+  isLinkDissabled() {
+    this.user.roles.forEach(role => {
+      if (role.id == 1 || role.id == 2) {
+        this.linkEnabled = true;
+      }
+    });
   }
 }

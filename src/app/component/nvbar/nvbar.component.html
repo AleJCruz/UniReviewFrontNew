@@ -15,7 +15,8 @@
   <!-- Sección para usuarios autenticados -->
   <ng-container *ngIf="isAuthenticated">
     <div class="center-items">
-      <a mat-button routerLink="/user/teachers">Teachers</a>
+      <a mat-button routerLink="linkEnabled ? true:/user/teachers" (click)="onLinkClick()">Teachers</a>
+      <div *ngIf="showMessage" class="alert-message">Usted no tiene acceso</div>
       <a mat-button routerLink="/user/universities">Universities</a>
     </div>
 
@@ -25,7 +26,6 @@
     </button>
     <mat-menu #profileMenu="matMenu">
       <button mat-menu-item routerLink="/user/profile">Mi perfil</button>
-      <button mat-menu-item routerLink="/configuraciones">Configuraciones</button>
       <button mat-menu-item routerLink="/landing" (click)="logout()">Cerrar sesión</button>
     </mat-menu>
   </ng-container>

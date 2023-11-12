@@ -15,7 +15,7 @@ export class NvbarComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   user:User;
   private userSubscription: Subscription;
-  private linkEnabled: boolean = false;
+  linkEnabled: boolean = false;
   showMessage: boolean = false;
   constructor(private authService: AuthService, private userService:UserService) {}
 
@@ -35,7 +35,6 @@ export class NvbarComponent implements OnInit, OnDestroy {
         }
       }
     );
-    this.isLinkDissabled();
   }
   onLinkClick(): void {
     if (!this.linkEnabled) {

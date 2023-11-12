@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         enabled: true,
         password: this.form.value.password,
         district: this.form.value.districtUser,
-        roles: [new Role(this.form.value.typeUser === 'pre-universitario' ? 2 : 3, this.form.value.typeUser)],
+        roles: [new Role(this.form.value.typeUser === 'PreUniversitario' ? 3 : 2, this.form.value.typeUser)],
         image: new Image()
       };
 

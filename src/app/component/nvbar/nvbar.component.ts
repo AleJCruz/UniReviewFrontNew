@@ -17,7 +17,8 @@ export class NvbarComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
   linkEnabled: boolean = false;
   showMessage: boolean = false;
-  constructor(private authService: AuthService, private userService:UserService) {}
+  constructor(private authService: AuthService, private userService:UserService) {
+  }
 
   ngOnInit() {
     this.subscription = this.authService.getAuthStatus().subscribe(
@@ -34,9 +35,12 @@ export class NvbarComponent implements OnInit, OnDestroy {
           this.user = userData;
         }
       }
+
     );
   }
   onLinkClick(): void {
+    this.isLinkDissabled();
+    console.log(this.user, this.isAuthenticated);
     if (!this.linkEnabled) {
       this.showMessage = true;
       setTimeout(() => this.showMessage = false, 3000); // El mensaje desaparece después de 3 segundos

@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {User} from "../../model/User";
 import {Image} from "../../model/Image";
 import {UserService} from "../../service/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nvbar',
@@ -17,7 +18,7 @@ export class NvbarComponent implements OnInit, OnDestroy {
   private userSubscription: Subscription;
   linkEnabled: boolean = false;
   showMessage: boolean = false;
-  constructor(private authService: AuthService, private userService:UserService) {
+  constructor(private authService: AuthService, private userService:UserService, private router:Router) {
   }
 
   ngOnInit() {
@@ -38,12 +39,17 @@ export class NvbarComponent implements OnInit, OnDestroy {
 
     );
   }
+
   onLinkClick(): void {
     this.isLinkDissabled();
     console.log(this.user, this.isAuthenticated);
-    if (!this.linkEnabled) {
+
+    if (this.linkEnabled) {
+      this.router.navigate(['/user/teachers']);
+    } else {
+      // Si linkEnabled es false, muestra el mensaje
       this.showMessage = true;
-      setTimeout(() => this.showMessage = false, 3000); // El mensaje desaparece después de 3 segundos
+      setTimeout(() => this.showMessage = false, 3000);
     }
   }
 

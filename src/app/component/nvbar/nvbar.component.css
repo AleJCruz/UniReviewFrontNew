@@ -1,3 +1,8 @@
+.logo {
+  height: 50px; /* Ajusta esto según el tamaño deseado */
+  width: auto; /* Mantiene la relación de aspecto de la imagen */
+  margin-right: 10px; /* Espaciado entre el logo y el texto */
+}
 mat-toolbar {
 background-color: #2e34b8;
   display: flex;

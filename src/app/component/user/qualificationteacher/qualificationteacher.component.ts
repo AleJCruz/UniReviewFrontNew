@@ -49,7 +49,7 @@ export class QualificationteacherComponent implements OnInit{
   }
 
   submitReview() {
-    if (this.reviewForm.valid) {
+    if (this.reviewForm.valid && this.user.id != null) {
       const newReview: TeacherReview = {
         id: 0, // ID será generado por el backend
         reviewdate: new Date().toISOString(), // Fecha actual en formato ISO
@@ -93,16 +93,10 @@ export class QualificationteacherComponent implements OnInit{
   }
   //nO TOCAR DE CA EN ADELANTE
   getUserData() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.authService.getUserData(token).subscribe(
-        userData => {
-          this.user = userData;
-        },
-        error => {
-          console.error(error);
-        }
-      );
+    const userString = sessionStorage.getItem('user');
+    if (userString) {
+      const userData = JSON.parse(userString);
+      this.user = Object.assign(new User(), userData);
     }
   }
   getTeacherDetails(id: number) {
@@ -129,24 +123,5 @@ export class QualificationteacherComponent implements OnInit{
         return '';
     }
   }
-  // submitReview() {
-  //   // Obtener la fecha actual
-  //   const currentDate = new Date();
-  //   // Formatear la fecha actual como 'YYYY-MM-DD' (sin la hora)
-  //   const formattedDate = currentDate.toISOString().slice(0, 10);
-  //
-  //   // Asignar la fecha formateada a la revisión
-  //   this.review.reviewdate = formattedDate;
-  //
-  //   // Llama al servicio para enviar la revisión del profesor al servidor.
-  //   this.teacherReviewService.insert(this.review).subscribe(
-  //     (response) => {
-  //       console.log('Revisión del profesor enviada con éxito', response);
-  //       // Realiza cualquier otra acción necesaria después de enviar la revisión.
-  //     },
-  //     (error) => {
-  //       console.error('Error al enviar la revisión del profesor', error);
-  //     }
-  //   );
-  // }
+
 }

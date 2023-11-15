@@ -1,4 +1,5 @@
 <mat-toolbar color="primary">
+  <img src="assets/images/logo.png" alt="Logo" class="logo"> <!-- Añadir esta línea -->
   <a mat-button routerLink="/">UniReview</a>
 
 
@@ -15,7 +16,7 @@
   <!-- Sección para usuarios autenticados -->
   <ng-container *ngIf="isAuthenticated">
     <div class="center-items">
-      <a mat-button [routerLink]="linkEnabled ? '/user/teachers' : null" (click)="onLinkClick()">Teachers</a>
+      <a mat-button (click)="onLinkClick()">Teachers</a>
       <div *ngIf="showMessage" class="alert-message">Usted no tiene acceso</div>
       <a mat-button routerLink="/user/universities">Universities</a>
     </div>

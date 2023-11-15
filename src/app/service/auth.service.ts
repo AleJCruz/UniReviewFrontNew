@@ -40,6 +40,7 @@ export class AuthService {
 
   logOut(): void {
     localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     this.setAuthStatus(false);
   }
   setAuthStatus(value: boolean) {

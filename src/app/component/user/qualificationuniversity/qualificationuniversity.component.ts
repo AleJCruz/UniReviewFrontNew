@@ -50,16 +50,10 @@ export class QualificationuniversityComponent implements OnInit{
     this.unsubscribe$.complete();
   }
   getUserData() {
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.authService.getUserData(token).subscribe(
-        userData => {
-          this.user = userData;
-        },
-        error => {
-          console.error(error);
-        }
-      );
+    const userString = sessionStorage.getItem('user');
+    if (userString) {
+      const userData = JSON.parse(userString);
+      this.user = Object.assign(new User(), userData);
     }
   }
   getUniversityDetails(id: number) {

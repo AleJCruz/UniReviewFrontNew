@@ -52,6 +52,7 @@ export class LoginComponent {
     if (token) {
       this.authService.getUserData(token).subscribe(
         userData => {
+          sessionStorage.setItem('user', JSON.stringify(userData));
           console.log(userData);
         },
         error => {

@@ -27,5 +27,10 @@
       <button type="submit" class="btn-submit">Registrar</button>
     </form>
   </div>
-
+  <div class="error-message" *ngIf="showImageUploadErrorMessage">
+    Por favor, suba la imagen del profesor.
+  </div>
+  <div class="error-message" *ngIf="showFieldErrorMessage">
+    Por favor, complete todos los campos.
+  </div>
 </div>

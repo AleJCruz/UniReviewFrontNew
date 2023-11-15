@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import {Teacher} from "../model/Teacher";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, Subject} from "rxjs";
-
+import {environment} from "../../environments/environment";
+const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
-  private url = "http://localhost:8080/api/";
+  private url = `${base_url}`;
   private listaCambio = new Subject<Teacher[]>();
 // inyectando httpClient
   constructor(private http: HttpClient) { }

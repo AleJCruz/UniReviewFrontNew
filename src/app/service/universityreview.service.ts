@@ -3,12 +3,13 @@ import {Observable, Subject, switchMap, tap} from "rxjs";
 import {TeacherReview} from "../model/TeacherReview";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UniversityReview} from "../model/UniversityReview";
-
+import {environment} from "../../environments/environment";
+const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
 export class UniversityreviewService {
-  private url = "http://localhost:8080/api/";
+  private url = `${base_url}`;
   private listaChange = new Subject<UniversityReview[]>();
 
   constructor(private http:HttpClient) { }

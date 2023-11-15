@@ -3,12 +3,13 @@ import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {User} from "../model/User";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Image} from "../model/Image";
-
+import {environment} from "../../environments/environment";
+const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private url = "http://localhost:8080/api/";
+  private url = `${base_url}`;
   private listaChange = new Subject<User[]>();
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   constructor(private http:HttpClient) { }

@@ -4,12 +4,13 @@ import {University} from "../model/University";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {TeacherReview} from "../model/TeacherReview";
 import {User} from "../model/User";
-
+import {environment} from "../../environments/environment";
+const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherreviewService {
-  private url = "http://localhost:8080/api/";
+  private url = `${base_url}`;
   private listaChange = new Subject<TeacherReview[]>();
   constructor(private http:HttpClient) { }
   list(id:number):Observable<any>{

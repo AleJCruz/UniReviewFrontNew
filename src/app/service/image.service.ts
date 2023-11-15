@@ -3,12 +3,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Teacher} from "../model/Teacher";
 import {Image} from "../model/Image";
 import {Observable} from "rxjs";
-
+import {environment} from "../../environments/environment";
+const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
-  private url = "http://localhost:8080/api/";
+  private url = `${base_url}`;
   constructor(private http: HttpClient) { }
   insert(file: File): Observable<any> { // Cambia el tipo de retorno a any o a un tipo de DTO adecuado si lo tienes definido
     const formData: FormData = new FormData();

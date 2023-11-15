@@ -24,6 +24,8 @@ export class RegisterTeacherComponent implements OnInit {
   courses:Course[];
   showDropdown = false;
   selectedCourses: Course[] = [];
+  showFieldErrorMessage = false;
+  showImageUploadErrorMessage = false;
   constructor(private router: Router,private fb: FormBuilder, private teacherService:TeacherService, private imageService:ImageService
   ,private courseService:CourseService) {
 
@@ -99,7 +101,15 @@ export class RegisterTeacherComponent implements OnInit {
           console.error('Error al subir la imagen:', error);
         });
       }
+      else {
+        // Validación de campos obligatorios
+        this.showFieldErrorMessage = true;
+        this.showImageUploadErrorMessage = false;
+      }
     } else {
+      // Validación de carga de imagen
+      this.showFieldErrorMessage = false;
+      this.showImageUploadErrorMessage = true;
       console.error('No hay archivo seleccionado.');
     }
   }

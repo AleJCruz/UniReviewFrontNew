@@ -29,4 +29,7 @@
       <button type="button" class="button cancel-button" (click)="confirmation = false">No</button>
     </div>
   </ng-template>
+  <div *ngIf="showValidationError" class="error-message">
+    Por favor, complete todos los campos de texto.
+  </div>
 </div>

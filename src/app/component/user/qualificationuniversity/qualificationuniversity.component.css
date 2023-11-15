@@ -214,3 +214,9 @@
     margin-bottom: 10px;
   }
 }
+
+.validation-error {
+  color: red;
+  text-align: center;
+  margin-top: 10px; /* Espacio superior para separarlo del formulario */
+}

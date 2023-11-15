@@ -11,6 +11,7 @@ export class LoginComponent {
   username: string;
   password: string;
   errorMessage = '';
+  showLoginError = false;
   constructor(
     private authService: AuthService, // Servicio de autenticación que manejará la lógica de inicio de sesión
     private router: Router
@@ -38,13 +39,14 @@ export class LoginComponent {
           }
         },
         error => {
-          // Manejo del caso de error.
           console.error('Error during login:', error);
           this.errorMessage = 'Invalid username or password.';
+          this.showLoginError = true; // Mostrar mensaje de error
         }
       );
     } else {
       this.errorMessage = 'Please enter both username and password.';
+      this.showLoginError = true; // Mostrar mensaje de error
     }
   }
   getUserData() {

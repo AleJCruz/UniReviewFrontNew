@@ -44,6 +44,9 @@
         </select>
       </div>
       <button type="submit" class="btn btn-success">Enviar reseña</button>
+      <div class="validation-error" *ngIf="isValidationErrorVisible">
+        Debe completar todos los campos.
+      </div>
     </form>
   </div>
 </div>

@@ -53,6 +53,9 @@
       <button type="submit" class="btn btn-success">Enviar reseña</button>
     </form>
   </div>
+  <div class="validation-error" *ngIf="showValidationError">
+    <h5>{{ msgError }}</h5>
+  </div>
 </div>
 <!--Listar resenas-->
 <div class="reviews-container">

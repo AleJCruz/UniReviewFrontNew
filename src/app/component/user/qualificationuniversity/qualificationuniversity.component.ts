@@ -20,7 +20,10 @@ export class QualificationuniversityComponent implements OnInit{
   university: University;
   isReviewFormVisible: boolean = false;
   reviews: UniversityReview[] = [];
+  isValidationErrorVisible: boolean = false;
+  validationErrorMessage: string = '';
   reviewForm: FormGroup;
+
   private unsubscribe$ = new Subject<void>();
   constructor(
     private router: Router,
@@ -28,6 +31,7 @@ export class QualificationuniversityComponent implements OnInit{
     private authService: AuthService,
     private universityService: UniversityService,
     private universityreviewService: UniversityreviewService
+
   ) { this.universityreviewService.getList().subscribe((reviews: UniversityReview[]) => {
     this.reviews = reviews;
   }); }
@@ -78,7 +82,7 @@ export class QualificationuniversityComponent implements OnInit{
     this.isReviewFormVisible = !this.isReviewFormVisible;
   }
   submitReview() {
-    if (this.reviewForm.valid){
+    if (this.reviewForm.valid && this.user && this.user.id !== null && this.user.id !== 0){
       const newReview: UniversityReview = {
         id: 0, // ID será generado por el backend
         reviewdate: new Date().toISOString(), // Fecha actual en formato ISO
@@ -101,6 +105,17 @@ export class QualificationuniversityComponent implements OnInit{
           console.error('Error creating review', error);
         }
       );
+    }
+    else {
+      // Muestra el mensaje de error si el id del usuario es nulo o 0
+      this.isValidationErrorVisible = true;
+      this.validationErrorMessage = 'El ID del usuario no es válido. Por favor, inicie sesión nuevamente.';
+
+      // Configurar un temporizador para ocultar el mensaje después de 4 segundos
+      setTimeout(() => {
+        this.isValidationErrorVisible = false;
+        this.validationErrorMessage = '';
+      }, 4000);
     }
   }
   /*Reviews*/

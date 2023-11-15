@@ -20,6 +20,8 @@ export class QualificationteacherComponent implements OnInit{
   reviewForm: FormGroup;
   isReviewFormVisible: boolean = false;
   user: User;
+  showValidationError: boolean = false;
+  msgError: string = 'Todos los campos son obligatorios';
   constructor(
     private route:Router,
     private activatedRoute: ActivatedRoute,
@@ -58,6 +60,7 @@ export class QualificationteacherComponent implements OnInit{
         teacherDTO: this.teacher, // Suponiendo que teacher ya está asignado
         user: this.user, // Suponiendo que user ya está asignado
         rigurosityTitle: this.reviewForm.value.rigurosity
+
       };
       this.teacherreviewService.insert(newReview).subscribe(
         (response) => {
@@ -70,6 +73,22 @@ export class QualificationteacherComponent implements OnInit{
           console.error('Error al enviar la revisión del profesor', error);
         }
       );
+      this.showValidationError = false; // Reinicia el estado de la validación
+
+      // También puedes agregar un temporizador para ocultar el mensaje después de 4 segundos
+      setTimeout(() => {
+        this.showValidationError = false;
+      }, 4000);
+    }
+    else {
+      this.msgError = 'Cierra e inicia sesion denuevo para calificar';
+      if (!this.reviewForm.valid){
+        this.msgError = 'Todos los campos son obligatorios';
+      }
+      this.showValidationError = true;
+      setTimeout(() => {
+        this.showValidationError = false;
+      }, 4000);
     }
   }
   //RESENAS

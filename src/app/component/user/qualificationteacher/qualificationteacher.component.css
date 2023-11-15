@@ -317,3 +317,9 @@
   flex-direction: row;
   align-items: center;
 }
+
+.validation-error {
+  color: red;
+  text-align: center;
+  margin-top: 10px; /* Espacio superior para separarlo del formulario */
+}

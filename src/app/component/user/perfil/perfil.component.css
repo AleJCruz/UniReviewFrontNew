@@ -96,3 +96,8 @@
 .button:hover {
   opacity: 0.8;
 }
+
+.error-message {
+  color: red;
+  margin-top: 10px; /* Ajusta según sea necesario */
+}

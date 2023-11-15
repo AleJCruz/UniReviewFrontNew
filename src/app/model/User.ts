@@ -7,7 +7,7 @@ export class User {
   email: string;
   username: string;
   password: string;
-  district?: string; // Opcional, porque puede ser nulo
+  district: string; // Opcional, porque puede ser nulo
   age: number;
   enabled: boolean;
   roles: Role[];

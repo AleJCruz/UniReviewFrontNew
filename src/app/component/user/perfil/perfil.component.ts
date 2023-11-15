@@ -14,7 +14,7 @@ export class PerfilComponent implements OnInit{
   selectedFile: File;
   editMode: boolean = false;
   confirmation: boolean = false;
-
+  showValidationError: boolean = false;
   constructor(private router: Router, private authService: AuthService, private userService: UserService) { }
 
   ngOnInit() {
@@ -46,6 +46,22 @@ export class PerfilComponent implements OnInit{
 
   updateProfile() {
     this.confirmation = false; // Ocultamos el diálogo de confirmación
+    if (
+      this.user.name.trim() === '' ||
+      this.user.email.trim() === '' ||
+      this.user.username.trim() === '' ||
+      this.user.district.trim() === '' ||
+      this.user.age === null // Agregamos la validación para age
+    ) {
+      this.showValidationError = true;
+
+      // Después de 4 segundos, borra el mensaje de error
+      setTimeout(() => {
+        this.showValidationError = false;
+      }, 4000);
+
+      return;
+    }
     if (this.selectedFile) {
       // Lógica para manejar el archivo seleccionado
       const reader = new FileReader();
@@ -72,6 +88,7 @@ export class PerfilComponent implements OnInit{
 
   sendUpdate() {
     if (this.user) {
+
       // Combina las llamadas de actualización en una secuencia si es necesario
       this.userService.edit((<number>this.user.id), this.user.image).subscribe(
         response => {

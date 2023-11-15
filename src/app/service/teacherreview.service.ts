@@ -21,7 +21,7 @@ export class TeacherreviewService {
   }
   insert (teacherReview:TeacherReview){
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json', // This line ensures that you're sending JSON
+      'Content-Type': 'application/json', // Enviando Jsooooooon
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.post<TeacherReview>(this.url + "teacherReview", teacherReview, { headers }).pipe(
@@ -34,8 +34,6 @@ export class TeacherreviewService {
         );
       })
     );
-    // return this.http.post(
-    //   this.url+"teacherReview", teacherReview, { headers });
   }
   setList(listaNueva:TeacherReview[]){
 
@@ -49,7 +47,7 @@ export class TeacherreviewService {
     this.http.delete(url).subscribe(
       (response) => {
         console.log('Reseña del profesor eliminada con éxito', response);
-        // Realiza cualquier otra acción necesaria después de la eliminación.
+        // agregamos algo?
       },
       (error) => {
         console.error('Error al eliminar la reseña del profesor', error);

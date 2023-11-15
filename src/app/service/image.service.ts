@@ -11,15 +11,15 @@ const base_url = environment.base
 export class ImageService {
   private url = `${base_url}`;
   constructor(private http: HttpClient) { }
-  insert(file: File): Observable<any> { // Cambia el tipo de retorno a any o a un tipo de DTO adecuado si lo tienes definido
+  insert(file: File): Observable<any> {
     const formData: FormData = new FormData();
-    formData.append('file', file, file.name); // Asegúrate de que 'file' coincida con el nombre del parámetro esperado en tu backend
+    formData.append('file', file, file.name); // En el back colocar 'file' en la iamgen cuack
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
 
-    // No establecer 'Content-Type' aquí, deja que Angular lo haga automáticamente
+    // No establecer 'Content-Type' aquí, dejemos que Angular lo haga automáticamente
     return this.http.post<Image>(this.url + "image/upload", formData, { headers }); // Cambia 'Image' a 'any' o al DTO adecuado
   }
 }

@@ -20,7 +20,7 @@ export class RegisterTeacherComponent implements OnInit {
   selectedFile: File;
   image:Image;
   teacherForm: FormGroup;
-  fileName: string = 'Upload Image'; // Nuevo
+  fileName: string = 'Upload Image'; // Nueva imagen wa
   courses:Course[];
   showDropdown = false;
   selectedCourses: Course[] = [];
@@ -36,7 +36,7 @@ export class RegisterTeacherComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/user/teachers']); // Asegúrate de cambiar a la ruta correcta
+    this.router.navigate(['/user/teachers']); // Siempre la ruta correcta muchachos
   }
   onFileSelected(event: Event): void {
     const element = event.target as HTMLInputElement;
@@ -52,16 +52,13 @@ export class RegisterTeacherComponent implements OnInit {
 
   onCourseToggle(course: Course, event: any) {
     if (event.target.checked) {
-      // Agregar al array si se selecciona
       this.selectedCourses.push(course);
     } else {
-      // Remover del array si se deselecciona
       const index = this.selectedCourses.indexOf(course);
       if (index > -1) {
         this.selectedCourses.splice(index, 1);
       }
     }
-    // Actualizar el valor del control del formulario
     this.teacherForm.controls['coursesArray'].setValue(this.selectedCourses);
   }
   guardar(){
@@ -88,11 +85,9 @@ export class RegisterTeacherComponent implements OnInit {
                 console.log(course.id + " - "+ data.id);
                 this.teacherService.addCourse(data.id,course.id).subscribe();
               });
-              // Actualizar la lista de usuarios o manejar la respuesta como sea necesario
               console.log("Registro exitoso, datos:", teacher.fullname);
             },
             error: (error) => {
-              // Manejar el error de inserción aquí
               console.error(error);
             }
           });

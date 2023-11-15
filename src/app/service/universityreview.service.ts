@@ -33,7 +33,7 @@ export class UniversityreviewService {
     this.listaChange.next(listaNueva); //enviar la nueva lista a los suscriptores
   }
   getList(): Observable<UniversityReview[]> {
-    return this.listaChange.asObservable(); // No ha cambiado, esto es correcto.
+    return this.listaChange.asObservable(); // Simcambios 👍
   }
   delete(id: number) {
     const url =this.url+ `universityReview/${id}`;

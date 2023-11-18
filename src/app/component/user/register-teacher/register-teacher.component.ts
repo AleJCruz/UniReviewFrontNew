@@ -86,6 +86,7 @@ export class RegisterTeacherComponent implements OnInit {
                 this.teacherService.addCourse(data.id,course.id).subscribe();
               });
               console.log("Registro exitoso, datos:", teacher.fullname);
+              this.router.navigate(['/user/teachers']);
             },
             error: (error) => {
               console.error(error);

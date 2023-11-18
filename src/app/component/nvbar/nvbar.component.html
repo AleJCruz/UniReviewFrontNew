@@ -5,11 +5,10 @@
 
   <ng-container *ngIf="!isAuthenticated">
     <div class="center-items">
-      <a mat-button routerLink="/landing/nosotros">Nosotros</a>
-      <a mat-button routerLink="/membresia">Membresía</a>
-      <a mat-button routerLink="/contactanos">Contáctanos</a>
+    <a mat-button (click)="navigate('Nosotros')">Nosotros</a>
+    <a mat-button (click)="navigate('Testimonios')">Testimonios</a>
+    <a mat-button (click)="navigate('promociones-section')">Membresía</a>
     </div>
-
     <a mat-button class="custom-button" routerLink="/login">Ingresar</a>
     <a mat-button class="custom-button" routerLink="/register">Registrarse</a>
   </ng-container>

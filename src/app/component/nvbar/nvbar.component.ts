@@ -39,6 +39,12 @@ export class NvbarComponent implements OnInit, OnDestroy {
 
     );
   }
+  navigate(sectionId: string) {
+    const element = document.querySelector(`#${sectionId}`);
+    if (element) {
+      element.scrollIntoView();
+    }
+  }
 
   onLinkClick(): void {
     this.isLinkDissabled();

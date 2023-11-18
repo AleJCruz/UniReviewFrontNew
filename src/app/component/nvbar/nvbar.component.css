@@ -1,29 +1,41 @@
+/* Estilos generales del logo */
 .logo {
-  height: 50px; /* Ajusta esto según el tamaño deseado */
-  width: auto; /* Mantiene la relación de aspecto de la imagen */
+  height: 5vh; /* Altura relativa al tamaño de la pantalla */
+  width: auto; /* Mantiene la relación de aspecto */
   margin-right: 10px; /* Espaciado entre el logo y el texto */
 }
+
+/* Estilos de la barra de navegación */
 mat-toolbar {
-background-color: #2e34b8;
+  background-color: #2e34b8;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
+/* Utiliza un 'spacer' para empujar elementos hacia los bordes de la barra de navegación */
 .spacer {
   flex: 1 1 auto;
 }
 
+/* Ajustes de estilo para campos de formulario dentro de la barra de navegación */
 mat-form-field {
   align-self: center;
   margin-right: 16px;
 }
-/*Botones de persona sin autenticar*/
+
+/* Estilos para la sección central del navbar cuando no hay autenticación */
 .center-items {
   display: flex;
   justify-content: center;
   flex-grow: 1;
 }
 
+/* Estilos personalizados para botones */
 .custom-button {
   background-color: purple;
   color: white;
@@ -35,18 +47,20 @@ mat-form-field {
 .custom-button:hover {
   background-color: darkpurple;
 }
-/*Barra de busqueda*/
+
+/* Estilos para contenedor de búsqueda */
 .search-container {
   display: flex;
   align-items: center;
-  margin: 0 auto; /* Centra horizontalmente en el navbar */
+  margin: 0 auto; /* Centra el contenedor de búsqueda */
 }
 
+/* Ajustes de estilo para la entrada de búsqueda personalizada */
 .custom-search-input {
-  width: 250px; /* Ajusta según el largo deseado */
+  width: 250px; /* Ajusta el ancho para pantallas grandes */
   padding: 6px 12px;
   font-size: 16px;
-  border-radius: 20px; /* Margenes redondos */
+  border-radius: 20px;
   border: 1px solid #ccc;
   transition: border-color 0.2s;
 }
@@ -55,26 +69,64 @@ mat-form-field {
   border-color: #007BFF;
   outline: none;
 }
+
+/* Estilos para la imagen de perfil */
 .profile-picture {
-  width: 50px; /* Ajusta al tamaño deseado */
-  height: 50px; /* Ajusta al tamaño deseado */
-  border-radius: 50%; /* Para hacerla circular */
-  margin-right: 10px; /* Espacio entre la imagen y el texto */
-  vertical-align: middle; /* Para centrar verticalmente respecto al texto */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
 }
+
+/* Estilos para elementos deshabilitados */
 .disabled {
   pointer-events: none;
   color: grey;
   cursor: default;
 }
 
+/* Estilos para mensajes de alerta */
 .alert-message {
-  color: red; /* Color del mensaje */
-  position: absolute; /* Ajusta la posición según necesites */
-  top: 10px; /* Ajusta según la ubicación deseada */
+  color: red;
+  position: absolute;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10; /* Asegúrate de que esté sobre otros elementos */
+  z-index: 10;
   margin-top: 65px;
   font-size: 12px;
+}
+
+/* Media queries para ajustar estilos en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .custom-search-input {
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .center-items,
+  .search-container {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: stretch; /* Alinea los elementos al ancho completo */
+  }
+
+  .custom-button {
+    width: auto; /* Permite que el botón se ajuste al contenido */
+    margin: 5px; /* Espaciado alrededor de los botones */
+  }
+
+  .profile-picture {
+    width: 40px; /* Ajusta el tamaño para pantallas más pequeñas */
+    height: 40px;
+  }
+
+  .logo {
+    height: 4vh; /* Ajusta la altura del logo en pantallas pequeñas */
+  }
+
+  /* Para pantallas pequeñas, podrías ocultar elementos no esenciales */
+  .custom-search-input,
+  .alert-message {
+    display: none;
+  }
 }

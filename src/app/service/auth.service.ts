@@ -7,7 +7,7 @@ const base_url = environment.base
   providedIn: 'root'
 })
 export class AuthService {
-  private authUrl = "http://13.58.12.146:8080/" + "authenticate";
+  private authUrl = "http://18.217.87.35:8080/" + "authenticate";
   private userUrl = `${base_url}` + "user/me";
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
